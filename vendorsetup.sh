@@ -17,7 +17,7 @@
 #
 # 	Please maintain this if you use this script or any part of it
 #
-FDEVICE="sweet"
+FDEVICE="sweet_k6a"
 
 #set -o xtrace
 fox_get_target_device() {
@@ -41,6 +41,10 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
    	export TW_DEFAULT_LANGUAGE="en"
 	export LC_ALL="C"
  	export ALLOW_MISSING_DEPENDENCIES=true
+	export FOX_ENABLE_APP_MANAGER=1
+        export OF_ENABLE_LPTOOLS := 1
+	export OF_FIX_DECRYPTION_ON_DATA_MEDIA=1
+	export OF_UNBIND_SDCARD_F2FS=1
 	export TARGET_DEVICE_ALT="sweetin"
 	export FOX_RECOVERY_SYSTEM_PARTITION="/dev/block/mapper/system"
 	export FOX_RECOVERY_VENDOR_PARTITION="/dev/block/mapper/vendor"
@@ -49,6 +53,9 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export OF_DONT_PATCH_ENCRYPTED_DEVICE=1
 	export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
 	export OF_NO_TREBLE_COMPATIBILITY_CHECK=1
+	export OF_FIX_DECRYPTION_ON_DATA_MEDIA=1
+	export OF_UNBIND_SDCARD_F2FS=1
+        export OF_IGNORE_LOGICAL_MOUNT_ERRORS=1
 	export OF_NO_MIUI_PATCH_WARNING=1
 	export FOX_USE_BASH_SHELL=1
 	export FOX_ASH_IS_BASH=1
@@ -64,7 +71,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
         export OF_ENABLE_FS_COMPRESSION=1
 
 	# Use Magisk v26.3 for the magisk addon
-	export FOX_USE_SPECIFIC_MAGISK_ZIP=~/Magisk/Magisk-v26.3.zip
+	export FOX_USE_SPECIFIC_MAGISK_ZIP=~/Magisk.zip
 
         # OTA
         export OF_KEEP_DM_VERITY=1
@@ -81,8 +88,8 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
 	export OF_CLOCK_POS=1
 
 	# R11.1 Settings
-	export FOX_VERSION="R11.1_5"
-	export OF_MAINTAINER="Aryan"
+	export FOX_VERSION="R11.1_1"
+	export OF_MAINTAINER="MiDoNaSR"
 
 	# let's see what are our build VARs
 	if [ -n "$FOX_BUILD_LOG_FILE" -a -f "$FOX_BUILD_LOG_FILE" ]; then

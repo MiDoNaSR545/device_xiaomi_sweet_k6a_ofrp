@@ -15,8 +15,8 @@
 #
 
 # Release name
-PRODUCT_RELEASE_NAME := sweet
-DEVICE_PATH := device/xiaomi/sweet
+PRODUCT_RELEASE_NAME := sweet_k6a
+DEVICE_PATH := device/xiaomi/sweet_k6a
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 
@@ -24,14 +24,21 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 $(call inherit-product, vendor/twrp/config/common.mk)
 
 # Inherit device configuration
-$(call inherit-product, device/xiaomi/sweet/device.mk)
+$(call inherit-product, device/xiaomi/sweet_k6a/device.mk)
 
 # Enable project quotas and casefolding for emulated storage without sdcardfs
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
 ## Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := sweet
-PRODUCT_NAME := twrp_sweet
+PRODUCT_DEVICE := sweet_k6a
+PRODUCT_NAME := twrp_sweet_k6a
 PRODUCT_BRAND := Redmi
-PRODUCT_MODEL := M2101K6G
+PRODUCT_MODEL := 2209116AG
 PRODUCT_MANUFACTURER := Xiaomi
+
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    TARGET_DEVICE=sweet \
+    TARGET_PRODUCT=sweet
+
+PRODUCT_SYSTEM_NAME := sweet
+PRODUCT_SYSTEM_DEVICE := sweet
